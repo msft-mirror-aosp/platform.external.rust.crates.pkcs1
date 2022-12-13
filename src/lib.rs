@@ -2,9 +2,8 @@
 #![cfg_attr(docsrs, feature(doc_cfg))]
 #![doc = include_str!("../README.md")]
 #![doc(
-    html_logo_url = "https://raw.githubusercontent.com/RustCrypto/meta/master/logo.svg",
-    html_favicon_url = "https://raw.githubusercontent.com/RustCrypto/meta/master/logo.svg",
-    html_root_url = "https://docs.rs/pkcs1/0.4.0-pre"
+    html_logo_url = "https://raw.githubusercontent.com/RustCrypto/media/6ee8e381/logo.svg",
+    html_favicon_url = "https://raw.githubusercontent.com/RustCrypto/media/6ee8e381/logo.svg"
 )]
 #![forbid(unsafe_code, clippy::unwrap_used)]
 #![warn(missing_docs, rust_2018_idioms, unused_qualifications)]
@@ -19,6 +18,7 @@ extern crate alloc;
 extern crate std;
 
 mod error;
+mod params;
 mod private_key;
 mod public_key;
 mod traits;
@@ -29,8 +29,9 @@ pub use der::{
     asn1::{ObjectIdentifier, UIntRef},
 };
 
-pub use self::{
+pub use crate::{
     error::{Error, Result},
+    params::{RsaOaepParams, RsaPssParams, TrailerField},
     private_key::RsaPrivateKey,
     public_key::RsaPublicKey,
     traits::{DecodeRsaPrivateKey, DecodeRsaPublicKey},
