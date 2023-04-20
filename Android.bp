@@ -49,9 +49,6 @@ rust_library_host {
         "libspki",
         "libzeroize",
     ],
-    apex_available: [
-        "//apex_available:platform",
-        "com.android.virt",
-    ],
+    product_available: true,
     vendor_available: true,
 }
