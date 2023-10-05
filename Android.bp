@@ -49,6 +49,40 @@ rust_library_host {
         "libspki",
         "libzeroize",
     ],
+}
+
+rust_library_rlib {
+    name: "libpkcs1_nostd",
+    crate_name: "pkcs1",
+    cargo_env_compat: true,
+    cargo_pkg_version: "0.4.1",
+    srcs: ["src/lib.rs"],
+    edition: "2021",
+    features: [
+        "alloc",
+        "pkcs8",
+        "zeroize",
+    ],
+    rustlibs: [
+        "libder_nostd",
+        "libpkcs8_nostd",
+        "libspki_nostd",
+        "libzeroize_nostd",
+    ],
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.virt",
+    ],
+    prefer_rlib: true,
+    no_stdlibs: true,
+    stdlibs: [
+        "libcompiler_builtins.rust_sysroot",
+        "libcore.rust_sysroot",
+    ],
     product_available: true,
     vendor_available: true,
+    visibility: [
+         "//system/keymint:__subpackages__",
+    ]
+    ,
 }
